@@ -109,7 +109,7 @@ def SVRPredict(models):
     predictions = UseTrainedModelsOnUnknownTest(models)
     predictions.sort(key=lambda x: x[0])
     submission = pd.DataFrame(predictions, columns=["ID","Target Pressure (bar)"])
-    submission.to_csv("submission6.csv", index=False)
+    submission.to_csv("SVR.csv", index=False)
     return submission
 
 
