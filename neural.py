@@ -94,8 +94,8 @@ def GridSearchNNModel(df):
 
     param_grid = {
         "epochs": [10, 50, 100, 250],
-        "batch_size": [16],
-        "optimizer": ["rmsprop"],
+        "batch_size": [16, 32, 64],
+        "optimizer": ["rmsprop, adam"],
     }
     grid = GridSearchCV(estimator=model, param_grid=param_grid, cv=3, scoring="neg_mean_squared_error")
     grid.fit(X_train, y_train)
