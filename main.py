@@ -47,14 +47,8 @@ def GBDT():
     models = MakeGBDTModels(ProcessData())
     GBDTPredict(models)
 
-
-
-    
-
-    
-
-
 def main():
+    # CheckMultipleData(ProcessData())
     SVR()
     NN(3)
     GBDT()

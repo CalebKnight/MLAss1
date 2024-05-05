@@ -33,8 +33,8 @@ def MakeNN(df, i):
 
     loss = keras.losses.MeanAbsolutePercentageError()
     model.compile(optimizer='rmsprop', loss=loss, metrics=[loss])
-    model = KerasRegressor(model, batch_size=16, epochs=250)
-    model.fit(X_train, y_train, epochs=20, verbose=0)
+    model = KerasRegressor(model, batch_size=16, epochs=25)
+    model.fit(X_train, y_train, epochs=25, verbose=0)
     return model , scaler, X_test, y_test
 
 def MakeNNModel(df, i, models):

@@ -42,8 +42,8 @@ def RemoveExcessivelyLargeTanks(df):
 
 def RemoveExcessivelyHighTankPressure(df):
     highDf = df[df["Tank Failure Pressure (bar)"] > 100].copy()
-    highDf["Tank Failure Pressure (bar)"] = highDf["Tank Failure Pressure (bar)"] / 100
-    df = df[df["Tank Volume"] < 100]
+    highDf= highDf["Tank Failure Pressure (bar)"] / 100
+    df = df[df["Tank Failure Pressure (bar)"] < 100]
     df = pd.concat([df, highDf])
     df = df[df["Tank Failure Pressure (bar)"] > 0]
     return df
@@ -82,11 +82,8 @@ def EngineerFeatures(df, testing=False):
     # Identifying how high of an angle the sensor is at compared to the y position
     newDf["Y*Angle"] = df["Obstacle Angle"] * df["Sensor Position y"]
     
-
     # Inferring the relationship between the distance to the BLEVE, the height of the BLEVE and the angle of the obstacle
     newDf["DB*BH*A"] = df["Obstacle Distance to BLEVE (m)"] * df["BLEVE Height (m)"] * df["Obstacle Angle"]
-
-
 
     if not testing:
         newDf = newDf[newDf["Vapour Amount"] < 1]
@@ -219,15 +216,3 @@ def MakeDf(sensorNumber, testing=False, fileName = "train.csv"):
     df = DropUselessColumns(df)
     df = ChooseSensors(df, sensorNumber)
     return df
-
-
-
-
-
-
-    
-
-
-
-
-# liquid temp seems good for other sensors
